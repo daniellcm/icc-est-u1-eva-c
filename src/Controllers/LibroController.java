@@ -16,21 +16,25 @@ public class LibroController {
         }
     }
 
-    public Book searchByName(Book[] libros, String name) {
-        int izq = 0;
-        int der = libros.length -1;
-        while (izq <= der) {
-            int cen = (izq + der) / 2;
-            int comp = libros(cen).getName.compareToIngnoreCase(name);
-
-            if (comp == 0) {
-                return libros(cen);
-            } else {
-
-
+        public Book searchByName(Book[] personas, String nombre) {
+            int izq = 0;
+            int der = personas.length - 1;
+    
+            while (izq <= der) {
+                int cen = (izq + der) / 2;
+                int comparacion = personas[cen].getName().compareToIgnoreCase(nombre);
+    
+                if (comparacion == 0) {
+                    return personas[cen];
+                } else if (comparacion < 0) {
+                    izq = cen + 1;
+                } else {
+                    der = cen - 1;
+                }
             }
+    
+            return null;
         }
-        return null;
     }
     
 }
